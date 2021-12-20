@@ -1,0 +1,58 @@
+
+<div class="page">
+    <div class="page-header">Weather Forecast</div>
+    <div class="page-body">
+      <div class="page-body__sidebar">
+        <ul class="cities-list"> <!--Added the list of cities-->
+          <li class="cities-list__item"
+            *ngFor="let city of cities; index as i"
+            (click)="onChooseCity(i)"> <!--binding an element clique to the method of the component class -->
+              {{ city.name }}
+          </li>
+        </ul>
+      </div>
+      <div class="page-body__details">
+       <app-weather-details *ngIf="chosenCity >= 0"></app-weather-details>
+      </div>
+    </div>
+   </div>
+
+
+<div class="forecast">
+    <div class="forecast-data">
+      <div class="forecast-row">
+        <span class="forecast-row__title">Conditions: </span>
+        <span class="forecast-row__description">{{ forecast.conditions }}</span>
+      </div>
+      <div class="forecast-row">
+        <span class="forecast-row__title">Temperature </span>
+        <div class="forecast-subrow">
+          <span class="forecast-subrow__title">Day: </span>
+          <span class="forecast-subrow__description">
+           {{ forecast.temperature.day.min }}&#176; - {{ forecast.temperature.day.max }}&#176;C
+         </span>
+        </div>
+        <div class="forecast-subrow">
+          <span class="forecast-subrow__title">Night: </span>
+          <span class="forecast-subrow__description">
+           {{ forecast.temperature.night.min }}&#176; - {{ forecast.temperature.night.max }}&#176;C
+         </span>
+        </div>
+      </div>
+      <div class="forecast-row">
+        <span class="forecast-row__title">Wind </span>
+        <div class="forecast-subrow">
+          <span class="forecast-subrow__title">Speed: </span>
+          <span class="forecast-subrow__description">{{ forecast.wind.speed }}mps</span>
+        </div>
+        <div class="forecast-subrow">
+          <span class="forecast-subrow__title">Direction: </span>
+          <span class="forecast-subrow__description">{{ forecast.wind.direction }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="forecast-logo">
+      <i class="wi wi-day-{{forecast.conditions}}"></i>
+    </div>
+   </div>
+   view rawweather-details.component.html hosted with ❤ by GitHub
